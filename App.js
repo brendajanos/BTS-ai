@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "./src/screens/HomeScreen";
 // Import your NextScreen component
-import NextScreen from "./src/screens/NextScreen";
+import StoryDefinitionScreen from "./src/screens/StoryDefinitionScreen";
 
 // Create a stack navigator
 const Stack = createStackNavigator();
@@ -15,7 +15,10 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="NextScreen" component={NextScreen} />
+        <Stack.Screen
+          name="StoryDefinitionScreen"
+          component={StoryDefinitionScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

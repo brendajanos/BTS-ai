@@ -14,7 +14,7 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   const handleGenerateStory = () => {
-    navigation.navigate("NextScreen");
+    navigation.navigate("StoryDefinitionScreen");
   };
 
   return (
@@ -29,7 +29,7 @@ const HomeScreen = () => {
       />
       <View style={styles.textContainer}>
         <View style={styles.headingContainer}>
-          <Text style={styles.heading}>Bedtime Stories</Text>
+          <Text style={styles.heading}>BedTime Stories</Text>
         </View>
         <Text style={styles.description}>
           Create magical and unique stories based on your child's personality
