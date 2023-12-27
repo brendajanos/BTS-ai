@@ -4,8 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "./src/screens/HomeScreen";
-// Import your NextScreen component
-import StoryDefinitionScreen from "./src/screens/StoryDefinitionScreen";
+import ChildDefinitionScreen from "./src/screens/ChildDefinitionScreen";
+import TaleDetailsScreen from "./src/screens/TaleDeatailsScreen";
+import LanguageDefinitionScreen from "./src/screens/LanguageDefinitionScreen";
 
 // Create a stack navigator
 const Stack = createStackNavigator();
@@ -16,9 +17,18 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
-          name="StoryDefinitionScreen"
-          component={StoryDefinitionScreen}
+          name="LanguageDefinitionScreen"
+          component={LanguageDefinitionScreen}
         />
+        <Stack.Screen
+          name="ChildDetailsScreen"
+          component={ChildDefinitionScreen}
+        />
+        <Stack.Screen
+          name="ChildDefinitionScreen"
+          component={ChildDefinitionScreen}
+        />
+        <Stack.Screen name="TaleDetailsScreen" component={TaleDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

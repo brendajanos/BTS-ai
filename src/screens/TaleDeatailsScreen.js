@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
-  Image,
   Text,
-  TouchableOpacity,
+  TextInput,
   StyleSheet,
+  TouchableOpacity,
+  Modal,
+  Button,
   ImageBackground,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import AdditionalCharacters from "../components/Character";
+import LocationSetter from "../components/Location";
 import { useNavigation } from "@react-navigation/native";
 
-const HomeScreen = () => {
+export default function TaleDetailsScreen() {
   const navigation = useNavigation();
+  const [location, setLocation] = useState("");
+  const [favoriteCharacters, setFavoriteCharacters] = useState([]);
 
-  const handleGenerateStory = () => {
-    navigation.navigate("LanguageDefinitionScreen");
+  const handleNextPage = () => {
+    navigation.navigate("ChildDetailsScreen");
+  };
+
+  const addFavoriteCharacter = (character) => {
+    setFavoriteCharacters([...favoriteCharacters, character]);
+    setShowCharacterModal(false);
   };
 
   return (
@@ -23,30 +34,22 @@ const HomeScreen = () => {
         source={require("../../assets/StarBackground.png")}
         style={styles.ImageBackground}
       ></ImageBackground>
-      <Image
-        source={require("../../assets/Teddybear.jpeg")}
-        style={styles.image}
-      />
-      <View style={styles.textContainer}>
-        <View style={styles.headingContainer}>
-          <Text style={styles.heading}>BedTime Stories</Text>
-        </View>
-        <Text style={styles.description}>
-          Create magical and unique stories based on your child's personality
-          and favourite characters
-        </Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Define your story!</Text>
       </View>
+      <LocationSetter location={location} setLocation={setLocation} />
+      <AdditionalCharacters />
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.buttonBackground}
-          onPress={handleGenerateStory}
+          onPress={handleNextPage}
         >
           <Text style={styles.buttonText}>Generate Story</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -54,43 +57,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  ImageBackground: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    opacity: 0.12,
-  },
-  image: {
-    width: 380,
-    height: 380,
-    paddingLeft: 20,
-    paddingRight: 30,
-    overflow: "hidden",
-    borderRadius: 200,
-    marginBottom: 20,
-    opacity: 0.9,
-  },
-  textContainer: {
-    alignItems: "center",
-    marginTop: 20,
+  titleContainer: {
     marginBottom: 20,
   },
-  headingContainer: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  heading: {
+  title: {
     color: "#f3bc77",
     fontSize: 24,
     fontWeight: "bold",
   },
-  description: {
-    color: "#9587A6",
-    fontSize: 16,
-    textAlign: "center",
-    marginHorizontal: 20,
+  inputContainer: {
+    width: 200,
+    alignItemsgnItems: "center",
+    marginBottom: 20,
+  },
+  input: {
+    height: 40,
+    backgroundColor: "#fff",
+    borderRadius: 5,
+    marginRight: 10,
+    paddingLeft: 10,
+    color: "#2E2045",
   },
   buttonContainer: {
     padding: 30,
@@ -107,6 +93,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  ImageBackground: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    opacity: 0.12,
+  },
 });
-
-export default HomeScreen;
