@@ -7,7 +7,8 @@ const LocationSetter = ({ location, setLocation }) => {
       <Text style={styles.label}>Where does the story play?</Text>
       <TextInput
         style={styles.input}
-        placeholder="Location"
+        placeholder="Location..."
+        placeholderTextColor="#9587A6"
         value={location}
         onChangeText={(text) => setLocation(text)}
       />
@@ -22,16 +23,18 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    backgroundColor: "#fff",
     borderRadius: 5,
     marginRight: 10,
+    color: "#f3bc77",
+    borderColor: "#9587A6",
+    borderWidth: 1,
     paddingLeft: 10,
-    color: "#2E2045",
   },
   textContainer: {
     marginBottom: 20,
   },
   label: {
+    marginBottom: 20,
     color: "#f3bc77",
     fontSize: 18,
     fontWeight: "bold",

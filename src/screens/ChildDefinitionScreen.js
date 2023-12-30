@@ -43,7 +43,8 @@ export default function ChildDefinitionScreen() {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Child's Name"
+          placeholder="Child's Name..."
+          placeholderTextColor="#9587A6"
           value={childName}
           onChangeText={(text) => setChildName(text)}
         />
@@ -84,11 +85,12 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    backgroundColor: "#fff",
     borderRadius: 5,
     marginRight: 10,
     paddingLeft: 10,
-    color: "#2E2045",
+    color: "#f3bc77",
+    borderColor: "#9587A6",
+    borderWidth: 1,
   },
   buttonContainer: {
     padding: 30,

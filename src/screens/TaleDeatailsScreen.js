@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
   StyleSheet,
   TouchableOpacity,
-  Modal,
-  Button,
   ImageBackground,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -17,15 +14,10 @@ import { useNavigation } from "@react-navigation/native";
 export default function TaleDetailsScreen() {
   const navigation = useNavigation();
   const [location, setLocation] = useState("");
-  const [favoriteCharacters, setFavoriteCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
   const handleNextPage = () => {
     navigation.navigate("ChildDetailsScreen");
-  };
-
-  const addFavoriteCharacter = (character) => {
-    setFavoriteCharacters([...favoriteCharacters, character]);
-    setShowCharacterModal(false);
   };
 
   return (
@@ -34,11 +26,13 @@ export default function TaleDetailsScreen() {
         source={require("../../assets/StarBackground.png")}
         style={styles.ImageBackground}
       ></ImageBackground>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Define your story!</Text>
-      </View>
+      <View style={styles.titleContainer}></View>
       <LocationSetter location={location} setLocation={setLocation} />
-      <AdditionalCharacters />
+      <AdditionalCharacters
+        characters={characters}
+        setCharacters={setCharacters}
+      />
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.buttonBackground}

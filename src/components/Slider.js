@@ -32,8 +32,6 @@ const styles = StyleSheet.create({
     height: 40,
     marginTop: 10,
     marginBottom: 10,
-    thumbTintColor: "#f3bc77",
-    color: "#f3bc77",
   },
   value: {
     color: "#f3bc77",
