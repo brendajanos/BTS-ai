@@ -1,24 +1,19 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ImageBackground,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import LanguagePicker from "../components/Picker";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-export default function LanguageDefinitionScreen() {
-  const navigation = useNavigation();
-  const [storyLanguage, setStoryLanguage] = useState("Hungarian");
 
-  const handleNextPage = () => {
-    navigation.navigate("ChildDefinitionScreen", {
-      storyLanguage: storyLanguage,
-    });
-  };
+export default function StoryScreen() {
+  const route = useRoute();
+  const [fetchedData, setFetchedData] = useState(null);
+
+  useEffect(() => {
+    const dataFromParams = route.params?.fetchedData;
+    if (dataFromParams) {
+      setFetchedData(dataFromParams);
+    }
+  }, [route.params]);
 
   return (
     <LinearGradient colors={["#2E2045", "#050A30"]} style={styles.container}>
@@ -26,22 +21,11 @@ export default function LanguageDefinitionScreen() {
         source={require("../../assets/StarBackground.png")}
         style={styles.ImageBackground}
       ></ImageBackground>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Select a language:</Text>
-      </View>
-      <View style={styles.languagePickerContainer}>
-        <LanguagePicker
-          storyLanguage={storyLanguage}
-          setStoryLanguage={setStoryLanguage}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.buttonBackground}
-          onPress={handleNextPage}
-        >
-          <Text style={styles.buttonText}> Next →</Text>
-        </TouchableOpacity>
+      <View style={styles.StoryContainer}>
+        <Text style={styles.title}>
+          Generated Story:{" "}
+          {fetchedData ? fetchedData.generatedStory : "Loading..."}
+        </Text>
       </View>
     </LinearGradient>
   );

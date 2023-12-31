@@ -13,21 +13,21 @@ import GenderSelection from "../components/Gender";
 
 import AgeSlider from "../components/Slider";
 
-export default function ChildDefinitionScreen() {
+export default function ChildDefinitionScreen({ route }) {
   const navigation = useNavigation();
   const [childAge, setChildAge] = useState(5);
   const [gender, setGender] = useState("Boy");
+  const { storyLanguage } = route.params;
 
   const [childName, setChildName] = useState("");
-  const [favoriteCharacters, setFavoriteCharacters] = useState([]);
 
   const handleNextPage = () => {
-    navigation.navigate("TaleDetailsScreen");
-  };
-
-  const addFavoriteCharacter = (character) => {
-    setFavoriteCharacters([...favoriteCharacters, character]);
-    setShowCharacterModal(false);
+    navigation.navigate("TaleDetailsScreen", {
+      storyLanguage,
+      childAge,
+      gender,
+      childName,
+    });
   };
 
   return (

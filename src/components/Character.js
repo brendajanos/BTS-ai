@@ -9,12 +9,6 @@ import {
 const AdditionalCharacters = ({ characters, setCharacters }) => {
   const [characterName, setCharacterName] = useState("");
 
-  const addCharacter = () => {
-    setCharacters([...characters, characterName]);
-    setCharacterName("");
-    setShowCharacterModal(false);
-  };
-
   return (
     <View style={styles.textContainer}>
       <Text style={styles.label}>Additional Characters</Text>
