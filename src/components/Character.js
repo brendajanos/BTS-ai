@@ -1,14 +1,7 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 
 const AdditionalCharacters = ({ characters, setCharacters }) => {
-  const [characterName, setCharacterName] = useState("");
-
   return (
     <View style={styles.textContainer}>
       <Text style={styles.label}>Additional Characters</Text>
@@ -17,10 +10,10 @@ const AdditionalCharacters = ({ characters, setCharacters }) => {
       </Text>
       <TextInput
         style={styles.input}
-        placeholder="Character's Name..."
+        placeholder="Events or character's Name..."
         placeholderTextColor="#9587A6"
-        value={characterName}
-        onChangeText={(text) => setCharacterName(text)}
+        value={characters}
+        onChangeText={(text) => setCharacters(text)}
       />
     </View>
   );

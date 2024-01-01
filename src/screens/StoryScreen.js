@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation, useRoute } from "@react-navigation/native";
-
+import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function StoryScreen() {
+  const navigation = useNavigation();
   const route = useRoute();
   const [fetchedData, setFetchedData] = useState(null);
 
   useEffect(() => {
-    const dataFromParams = route.params?.fetchedData;
+    const dataFromParams = route.params?.generatedStory;
     if (dataFromParams) {
       setFetchedData(dataFromParams);
     }
   }, [route.params]);
+
+  const handleTryAgain = () => {
+    navigation.navigate("Home", {});
+  };
 
   return (
     <LinearGradient colors={["#2E2045", "#050A30"]} style={styles.container}>
@@ -21,12 +33,19 @@ export default function StoryScreen() {
         source={require("../../assets/StarBackground.png")}
         style={styles.ImageBackground}
       ></ImageBackground>
-      <View style={styles.StoryContainer}>
-        <Text style={styles.title}>
-          Generated Story:{" "}
-          {fetchedData ? fetchedData.generatedStory : "Loading..."}
-        </Text>
-      </View>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.StoryContainer}>
+          <Text style={styles.title}>{fetchedData || "Loading..."}</Text>
+        </View>
+        <View style={styles.tryAgainContainer}>
+          <TouchableOpacity
+            style={styles.tryAgainButton}
+            onPress={handleTryAgain}
+          >
+            <Text style={styles.tryAgainButtonText}>Try Again</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </LinearGradient>
   );
 }
@@ -37,33 +56,33 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  languagePickerContainer: {
-    marginBottom: 100,
+  scrollContainer: {
+    padding: 20,
   },
-  titleContainer: {
-    paddingBottom: 10,
-    marginBottom: 1,
+  StoryContainer: {
+    paddingTop: 15,
+    paddingBottom: 15,
   },
   title: {
     color: "#f3bc77",
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: "bold",
     marginBottom: -30,
   },
-  buttonContainer: {
-    padding: 30,
-    marginTop: 30,
-    borderRadius: 25,
+  tryAgainContainer: {
+    marginTop: 40,
+    marginBottom: 30,
+    alignItems: "center",
   },
-  buttonBackground: {
+  tryAgainButton: {
     backgroundColor: "#FFA500",
     paddingVertical: 15,
     paddingHorizontal: 30,
-    borderRadius: 90,
+    borderRadius: 10,
   },
-  buttonText: {
-    color: "rgba(255, 255, 255, 1)",
-    fontSize: 18,
+  tryAgainButtonText: {
+    color: "white",
+    fontSize: 16,
     fontWeight: "bold",
   },
   ImageBackground: {

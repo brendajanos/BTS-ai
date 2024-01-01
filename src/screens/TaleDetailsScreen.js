@@ -10,60 +10,59 @@ import { LinearGradient } from "expo-linear-gradient";
 import AdditionalCharacters from "../components/Character";
 import LocationSetter from "../components/Location";
 import { useNavigation } from "@react-navigation/native";
+import OpenAI from "openai";
 import axios from "axios";
-import { Configuration as OpenAIConfiguration, OpenAIApi } from "openai";
-import { OPENAI_API_KEY as apiKey } from "@env";
+import { API_KEY } from "@env";
 
-const openai = new OpenAIApi(
-  new OpenAIConfiguration({
-    apiKey: apiKey,
-  })
-);
+const openai = new OpenAI({
+  apiKey: API_KEY,
+});
 
 export default function TaleDetailsScreen({ route }) {
   const navigation = useNavigation();
   const [location, setLocation] = useState("");
-  const [characters, setCharacters] = useState([]);
-  const { storyLanguage, childAge, gender, childName, favoriteCharacters } =
-    route.params;
+  const [characters, setCharacters] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { storyLanguage, childAge, gender, childName } = route.params;
 
   const handleNextPage = async () => {
-    const apiUrl = "https://api.openai.com/v1/chat/completions";
-    console.log(process.env.OPENAI_API_KEY);
-
-    const input = `Write me a short (200-250 words) story about a child who is ${gender} and is ${childAge} years old and has a name of ${childName}. The story should contain location: ${location}, and characters like: ${characters.join(
-      ", "
-    )}.`;
+    if (!location.trim() || !characters.trim()) {
+      alert("Please enter both location and characters");
+      return;
+    }
+    const input = `Write a short (about 200 words) story in ${storyLanguage} language about a child who is a ${gender} and ${childAge} years old and has a name of ${childName}. The story should contain location: ${location}, and characters like: ${characters}`;
 
     const requestData = {
-      model: "text-davinci-003",
-      prompt: input,
-      max_tokens: 300,
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: input }],
     };
 
+    const apiUrl = "https://api.openai.com/v1/chat/completions";
+
     try {
-      const response = await axios.post(apiUrl, requestData, {
+      setLoading(true);
+      const chatCompletion = await axios.post(apiUrl, requestData, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
+          Authorization: `Bearer ${openai.apiKey}`,
         },
       });
 
-      const generatedStory = response.data.choices[0].text;
-      console.log("Generated Story:", generatedStory);
+      const generatedStory = chatCompletion.data.choices[0].message.content;
 
       navigation.navigate("StoryScreen", {
         storyLanguage,
         childAge,
         gender,
         childName,
-        favoriteCharacters,
         location,
         characters,
         generatedStory,
       });
     } catch (error) {
       console.error("API Error:", error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,8 +83,11 @@ export default function TaleDetailsScreen({ route }) {
         <TouchableOpacity
           style={styles.buttonBackground}
           onPress={handleNextPage}
+          disabled={loading}
         >
-          <Text style={styles.buttonText}>Generate Story</Text>
+          <Text style={styles.buttonText}>
+            {loading ? "Loading..." : "Generate Story"}
+          </Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>

@@ -22,12 +22,17 @@ export default function ChildDefinitionScreen({ route }) {
   const [childName, setChildName] = useState("");
 
   const handleNextPage = () => {
+    if (!childName.trim()) {
+      alert("Please enter your child's name");
+      return;
+    }
     navigation.navigate("TaleDetailsScreen", {
       storyLanguage,
       childAge,
       gender,
       childName,
     });
+    
   };
 
   return (

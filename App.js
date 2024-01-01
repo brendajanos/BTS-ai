@@ -3,12 +3,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "./src/screens/HomeScreen";
-import ChildDefinitionScreen from "./src/screens/ChildDefinitionScreen";
-import TaleDetailsScreen from "./src/screens/TaleDeatailsScreen";
 import LanguageDefinitionScreen from "./src/screens/LanguageDefinitionScreen";
+import ChildDefinitionScreen from "./src/screens/ChildDefinitionScreen";
+import TaleDetailsScreen from "./src/screens/TaleDetailsScreen";
 import StoryScreen from "./src/screens/StoryScreen";
 
-// Create a stack navigator
 const Stack = createStackNavigator();
 
 export default function App() {

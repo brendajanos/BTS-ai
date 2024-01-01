@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
 
-const AgeSlider = ({ childAge, setChildAge }) => {
+const AgeSlider = ({childAge, setChildAge }) => {
   return (
     <View style={styles.textContainer}>
       <Text style={styles.label}>Child's Age</Text>
