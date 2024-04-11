@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Slider from "@react-native-community/slider";
+import Colors from "../constants/Colors";
+
 
 const AgeSlider = ({childAge, setChildAge }) => {
   return (
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   label: {
-    color: "#f3bc77",
+    color: Colors.primaryText,
     fontSize: 18,
     fontWeight: "bold",
   },
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   value: {
-    color: "#f3bc77",
+    color: Colors.primaryText,
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",

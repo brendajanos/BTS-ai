@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import Colors from "../constants/Colors";
 
 const GenderSelection = ({ gender, setGender }) => {
   return (
@@ -9,7 +10,7 @@ const GenderSelection = ({ gender, setGender }) => {
         <TouchableOpacity
           style={[
             styles.radioButton,
-            { backgroundColor: gender === "Boy" ? "#f3bc77" : "#2E2045" },
+            { backgroundColor: gender === "Boy" ? Colors.primaryText : Colors.darkText },
           ]}
           onPress={() => setGender("Boy")}
         >
@@ -18,7 +19,7 @@ const GenderSelection = ({ gender, setGender }) => {
         <TouchableOpacity
           style={[
             styles.radioButton,
-            { backgroundColor: gender === "Girl" ? "#f3bc77" : "#2E2045" },
+            { backgroundColor: gender === "Girl" ? Colors.primaryText : Colors.darkText },
           ]}
           onPress={() => setGender("Girl")}
         >
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   label: {
-    color: "#f3bc77",
+    color: Colors.primaryText,
     fontSize: 18,
     fontWeight: "bold",
   },

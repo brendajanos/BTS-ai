@@ -4,22 +4,22 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity,
   ImageBackground,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import GenderSelection from "../components/Gender";
-
+import Colors from "../constants/Colors";
 import AgeSlider from "../components/Slider";
+import Button from "../components/Button";
+
 
 export default function ChildDefinitionScreen({ route }) {
   const navigation = useNavigation();
   const [childAge, setChildAge] = useState(5);
   const [gender, setGender] = useState("Boy");
-  const { storyLanguage } = route.params;
-
   const [childName, setChildName] = useState("");
+  const { storyLanguage } = route.params;
 
   const handleNextPage = () => {
     if (!childName.trim()) {
@@ -32,7 +32,6 @@ export default function ChildDefinitionScreen({ route }) {
       gender,
       childName,
     });
-    
   };
 
   return (
@@ -49,7 +48,7 @@ export default function ChildDefinitionScreen({ route }) {
         <TextInput
           style={styles.input}
           placeholder="Child's Name..."
-          placeholderTextColor="#9587A6"
+          placeholderTextColor= {Colors.primaryPurple}
           value={childName}
           onChangeText={(text) => setChildName(text)}
         />
@@ -57,12 +56,7 @@ export default function ChildDefinitionScreen({ route }) {
       <AgeSlider childAge={childAge} setChildAge={setChildAge} />
       <GenderSelection gender={gender} setGender={setGender} />
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.buttonBackground}
-          onPress={handleNextPage}
-        >
-          <Text style={styles.buttonText}> Next →</Text>
-        </TouchableOpacity>
+        <Button title="Next" onPress={handleNextPage} />
       </View>
     </LinearGradient>
   );
@@ -78,7 +72,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    color: "#f3bc77",
+    color: Colors.primaryText,
     fontSize: 24,
     fontWeight: "bold",
   },
@@ -93,24 +87,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginRight: 10,
     paddingLeft: 10,
-    color: "#f3bc77",
-    borderColor: "#9587A6",
+    color: Colors.primaryText,
+    borderColor: Colors.primaryPurple,
     borderWidth: 1,
   },
   buttonContainer: {
     padding: 30,
     borderRadius: 25,
-  },
-  buttonBackground: {
-    backgroundColor: "#FFA500",
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 90,
-  },
-  buttonText: {
-    color: "rgba(255, 255, 255, 1)",
-    fontSize: 18,
-    fontWeight: "bold",
   },
   ImageBackground: {
     position: "absolute",

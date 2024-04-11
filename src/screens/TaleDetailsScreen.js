@@ -12,7 +12,9 @@ import LocationSetter from "../components/Location";
 import { useNavigation } from "@react-navigation/native";
 import OpenAI from "openai";
 import axios from "axios";
-import { API_KEY } from "@env";
+import Colors from "../constants/Colors";
+import { API_KEY } from "../../.env";
+
 
 const openai = new OpenAI({
   apiKey: API_KEY,
@@ -103,30 +105,12 @@ const styles = StyleSheet.create({
   titleContainer: {
     marginBottom: 20,
   },
-  title: {
-    color: "#f3bc77",
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  inputContainer: {
-    width: 200,
-    alignItemsgnItems: "center",
-    marginBottom: 20,
-  },
-  input: {
-    height: 40,
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    marginRight: 10,
-    paddingLeft: 10,
-    color: "#2E2045",
-  },
   buttonContainer: {
     padding: 30,
     borderRadius: 25,
   },
   buttonBackground: {
-    backgroundColor: "#FFA500",
+    backgroundColor: Colors.primaryBtn,
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 90,

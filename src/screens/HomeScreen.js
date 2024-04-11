@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import Colors from "../constants/Colors";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -82,12 +83,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   heading: {
-    color: "#f3bc77",
+    color: Colors.primaryText,
     fontSize: 24,
     fontWeight: "bold",
   },
   description: {
-    color: "#9587A6",
+    color: Colors.primaryPurple,
     fontSize: 16,
     textAlign: "center",
     marginHorizontal: 20,
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   buttonBackground: {
-    backgroundColor: "#FFA500",
+    backgroundColor: Colors.primaryBtn,
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 90,

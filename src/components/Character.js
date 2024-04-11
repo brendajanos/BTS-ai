@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
+import Colors from "../constants/Colors";
 
 const AdditionalCharacters = ({ characters, setCharacters }) => {
   return (
@@ -11,7 +12,7 @@ const AdditionalCharacters = ({ characters, setCharacters }) => {
       <TextInput
         style={styles.input}
         placeholder="Events or character's Name..."
-        placeholderTextColor="#9587A6"
+        placeholderTextColor={Colors.primaryPurple}
         value={characters}
         onChangeText={(text) => setCharacters(text)}
       />
@@ -24,29 +25,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: "center",
   },
-  plusButton: {
-    backgroundColor: "#f3bc77",
-    width: 40,
-    alignContent: "center",
-    height: 40,
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 10,
-  },
-  plusText: {
-    color: "#2E2045",
-    fontSize: 24,
-    fontWeight: "bold",
-  },
   description: {
-    color: "#9587A6",
+    color: Colors.primaryPurple,
     fontSize: 14,
     marginBottom: 20,
     marginTop: 5,
   },
   label: {
-    color: "#f3bc77",
+    color: Colors.primaryText,
     alignContent: "flex-start",
     fontSize: 18,
     fontWeight: "bold",
@@ -56,37 +42,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 225,
     marginRight: 10,
-    color: "#f3bc77",
-    borderColor: "#9587A6",
+    color: Colors.primaryText,
+    borderColor: Colors.primaryPurple,
     borderWidth: 1,
     paddingLeft: 10,
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  modalContent: {
-    backgroundColor: "#fff",
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  modalTitle: {
-    color: "#f3bc77",
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  modalInput: {
-    height: 40,
-    width: "80%",
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    paddingLeft: 10,
-    marginBottom: 10,
-    color: "#2E2045",
   },
 });
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
+import Colors from "../constants/Colors";
 
 const LocationSetter = ({ location, setLocation }) => {
   return (
@@ -8,7 +9,7 @@ const LocationSetter = ({ location, setLocation }) => {
       <TextInput
         style={styles.input}
         placeholder="Location..."
-        placeholderTextColor="#9587A6"
+        placeholderTextColor={Colors.primaryPurple}
         value={location}
         onChangeText={(text) => setLocation(text)}
       />
@@ -17,16 +18,12 @@ const LocationSetter = ({ location, setLocation }) => {
 };
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    flexDirection: "row",
-    marginBottom: 20,
-  },
   input: {
     height: 40,
     borderRadius: 5,
     marginRight: 10,
-    color: "#f3bc77",
-    borderColor: "#9587A6",
+    color: Colors.primaryText,
+    borderColor: Colors.primaryPurple,
     borderWidth: 1,
     paddingLeft: 10,
   },
@@ -35,7 +32,7 @@ const styles = StyleSheet.create({
   },
   label: {
     marginBottom: 20,
-    color: "#f3bc77",
+    color: Colors.primaryText,
     fontSize: 18,
     fontWeight: "bold",
   },

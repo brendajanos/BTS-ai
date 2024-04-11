@@ -3,12 +3,13 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
   ImageBackground,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import LanguagePicker from "../components/Picker";
 import { useNavigation } from "@react-navigation/native";
+import Colors from "../constants/Colors";
+import Button from "../components/Button";
 
 export default function LanguageDefinitionScreen() {
   const navigation = useNavigation();
@@ -36,12 +37,7 @@ export default function LanguageDefinitionScreen() {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.buttonBackground}
-          onPress={handleNextPage}
-        >
-          <Text style={styles.buttonText}> Next →</Text>
-        </TouchableOpacity>
+        <Button title="Next" onPress={handleNextPage} />
       </View>
     </LinearGradient>
   );
@@ -61,7 +57,7 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   title: {
-    color: "#f3bc77",
+    color: Colors.primaryText,
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: -30,
@@ -72,7 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   buttonBackground: {
-    backgroundColor: "#FFA500",
+    backgroundColor: Colors.primaryBtn,
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 90,

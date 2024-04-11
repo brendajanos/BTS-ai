@@ -10,6 +10,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
+import Colors from "../constants/Colors";
 
 export default function StoryScreen() {
   const navigation = useNavigation();
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   title: {
-    color: "#f3bc77",
+    color: Colors.primaryText,
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: -30,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   tryAgainButton: {
-    backgroundColor: "#FFA500",
+    backgroundColor: Colors.primaryBtn,
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 10,
