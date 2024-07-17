@@ -14,5 +14,9 @@
    - Install the dependencies: `npm install`
    - Start the Expo development server: `expo start`
 
+![Screenshot of Bedtime Stories app](https://imgur.com/Nw3dmA0)
+![Screenshot of Bedtime Stories app](https://imgur.com/PvWwaux)
+
+
 
 5. **Notes**:Please note that the OpenAI API requires an API key, which is not included in this repository. You will need to obtain your own API key to use this application.
