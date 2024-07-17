@@ -13,11 +13,12 @@ import { useNavigation } from "@react-navigation/native";
 import OpenAI from "openai";
 import axios from "axios";
 import Colors from "../constants/Colors";
-import { API_KEY } from "../../.env";
+import { API_KEY } from "@env";
 
 
 const openai = new OpenAI({
-  apiKey: API_KEY,
+  dangerouslyAllowBrowser: true,
+  apiKey: API_KEY
 });
 
 export default function TaleDetailsScreen({ route }) {
@@ -51,7 +52,6 @@ export default function TaleDetailsScreen({ route }) {
       });
 
       const generatedStory = chatCompletion.data.choices[0].message.content;
-
       navigation.navigate("StoryScreen", {
         storyLanguage,
         childAge,

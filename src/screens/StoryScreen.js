@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   scrollContainer: {
+    paddingTop: 50,
     padding: 20,
   },
   StoryContainer: {
