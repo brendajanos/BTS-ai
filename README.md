@@ -14,8 +14,8 @@
    - Install the dependencies: `npm install`
    - Start the Expo development server: `expo start`
 
-![Screenshot of Bedtime Stories app](https://imgur.com/Nw3dmA0)
-![Screenshot of Bedtime Stories app](https://imgur.com/PvWwaux)
+![Screenshot of Bedtime Stories app](https://i.imgur.com/Nw3dmA0.png)
+![Screenshot of Bedtime Stories app](https://i.imgur.com/PvWwaux.png)
 
 
 
